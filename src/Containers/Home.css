@@ -1,0 +1,29 @@
+.home-row {
+  padding: 2rem;
+}
+
+.home-picture {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.home-component {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-phone {
+  max-height: 30rem;
+}
+
+.home-img {
+  z-index: -1;
+  position: absolute;
+  width: 13.8rem;
+  height: 28.4rem;
+  bottom: 1rem;
+  right: 2.5rem;
+  border-radius: 2rem;
+}
