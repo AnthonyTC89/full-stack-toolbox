@@ -1,12 +1,12 @@
 import React from 'react';
+import Header from '../Components/Header';
+// import DataForm from '../Components/DataForm';
 import './Home.css';
 
-const Home = () => {
-  return (
-    <div className="container">
-      Hola Mundo
-    </div>
-  );
-};
+const Home = () => (
+  <>
+    <Header />
+  </>
+);
 
 export default Home;
