@@ -1,4 +1,4 @@
 export const type = 'UPDATE_DATA';
-const updateSession = (data) => ({ type, data });
+const updateSession = (inData) => ({ type, inData });
 
 export default updateSession;
