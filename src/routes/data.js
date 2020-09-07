@@ -29,10 +29,14 @@ router.post('/api/data', async (req, res) => {
 router.delete('/api/data/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    data.splice(id, 1);
-    res.sendStatus(200);
+    if (id > data.length) {
+      res.sendStatus(404);
+    } else {
+      data.splice(id, 1);
+      res.sendStatus(200);
+    }
   } catch (err) {
-    res.sendStatus(400);
+    res.sendStatus(404);
   }
 });
 

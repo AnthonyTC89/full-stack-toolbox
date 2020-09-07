@@ -39,3 +39,22 @@ describe('POST data ', () => {
       });
   });
 });
+
+describe('DELETE data ', () => {
+  it('request should be a success (200)', (done) => {
+    request(app)
+      .delete('/api/data/1')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('request should be an error not found (404) with invalid id(index)', (done) => {
+    request(app)
+      .delete('/api/data/4')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+});
