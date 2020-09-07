@@ -8,7 +8,7 @@ const Home = () => (
   <>
     <Header />
     <main className="container">
-      <div className="row text-center">
+      <div className="row text-center d-flex align-items-center">
         <section className="col-12 col-sm-6">
           <DataForm />
         </section>

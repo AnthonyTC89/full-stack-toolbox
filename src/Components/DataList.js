@@ -53,7 +53,6 @@ const DataList = ({ data, changeData }) => {
 };
 
 DataList.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.array.isRequired,
   changeData: PropTypes.func.isRequired,
 };

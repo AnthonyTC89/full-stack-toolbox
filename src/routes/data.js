@@ -1,6 +1,6 @@
 const express = require('express');
 
-const data = ['hola', 'mundo'];
+const data = ['hello', 'world'];
 
 const router = express.Router();
 router.get('/api/data', async (req, res) => {

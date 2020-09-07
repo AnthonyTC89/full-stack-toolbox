@@ -1,4 +1,10 @@
 .data-form {
   display: flex;
   flex-direction: column;
+  margin: auto;
+  padding: 2rem;
+}
+
+.data-input {
+  margin: 0.1rem auto;
 }

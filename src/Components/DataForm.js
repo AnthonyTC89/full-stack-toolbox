@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import LoadingGif from './LoadingGif';
+import addData from '../redux/actions/addData';
 import './DataForm.css';
 
 const defaultInputForm = {
   text: '',
 };
 
-const DataForm = () => {
+const DataForm = ({ addingData }) => {
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [inputForm, setInputForm] = useState(defaultInputForm);
@@ -26,8 +29,16 @@ const DataForm = () => {
     try {
       const res = await axios.post('/api/data/', inputForm);
       setMessage(res.statusText);
+      addingData(inputForm.text);
+      setInputForm(defaultInputForm);
     } catch (err) {
-      setMessage('error!');
+      if (err.response) {
+        setMessage(err.response.statusText);
+      } else if (err.message) {
+        setMessage(err.message);
+      } else {
+        setMessage('error');
+      }
     } finally {
       setLoading(false);
     }
@@ -36,20 +47,30 @@ const DataForm = () => {
   return (
     <form className="data-form" onSubmit={handleSubmit}>
       {loading ? <LoadingGif /> : null}
-      {message == null ? null : <small className="small-message">{message}</small>}
       <input
-        className="form-control input-login"
+        className="form-control data-input"
         name="text"
         placeholder="text"
         value={inputForm.text}
         onChange={handleChange}
         required
       />
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-primary" disabled={loading} type="submit">
         Submit
       </button>
+      {message == null ? null : <small className="small-message">{message}</small>}
     </form>
   );
 };
 
-export default DataForm;
+DataForm.propTypes = {
+  addingData: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addingData: (inData) => dispatch(addData(inData)),
+});
+
+const DataFormWrapper = connect(null, mapDispatchToProps)(DataForm);
+
+export default DataFormWrapper;
