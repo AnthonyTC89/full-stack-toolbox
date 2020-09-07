@@ -1,14 +1,11 @@
-const express = require('../src/server');
+const app = require('../src/server');
 const chai = require('chai');
-const chaiHttp = require('chai-http');
-
+const request = require('supertest')
 const { expect } = chai;
-chai.use(chaiHttp);
-const url = 'http://localhost:3001';
 
 describe('GET data ', () => {
   it('request should be a success array', (done) => {
-    chai.request(url)
+    request(app)
       .get('/api/data')
       .end((err, res) => {
         expect(res).to.have.status(200);
