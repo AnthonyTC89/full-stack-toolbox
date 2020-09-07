@@ -5,7 +5,7 @@ const data = ['hello', 'world'];
 const router = express.Router();
 router.get('/api/data', async (req, res) => {
   try {
-    res.json(data);
+    res.status(200).send(data);
   } catch (err) {
     res.sendStatus(404);
   }
@@ -14,8 +14,12 @@ router.get('/api/data', async (req, res) => {
 router.post('/api/data', async (req, res) => {
   try {
     const { text } = req.body;
-    data.push(text);
-    res.sendStatus(201);
+    if (text) {
+      data.push(text);
+      res.sendStatus(201);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (err) {
     res.sendStatus(404);
   }
