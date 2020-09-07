@@ -3,6 +3,7 @@ const express = require('express');
 const data = ['hello', 'world'];
 
 const router = express.Router();
+
 router.get('/api/data', async (req, res) => {
   try {
     res.status(200).send(data);
