@@ -24,7 +24,7 @@
     "uuid": "^8.3.0"
   },
   "scripts": {
-    "start": "node src/express.js",
+    "start": "node src/server.js",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
